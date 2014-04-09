@@ -8,6 +8,36 @@
 
 	 <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
 	 <meta name="author" content="Matt Malej" />
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	 <script type="text/x-mathjax-config">
+	   MathJax.Hub.Config({
+	   extensions: ["tex2jax.js"],
+	   jax: ["input/TeX","output/HTML-CSS"],
+	   tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+	   });
+	 </script>
+	 <script type="text/javascript" src="../MathJax/MathJax.js"></script>
+
+	 <style>
+	   h1 {text-align:center}
+	   h2 {
+	   font-weight: bold;
+	   background-color: #DDDDDD;
+	   padding: .2em .5em;
+	   margin-top: 1.5em;
+	   border-top: 3px solid #666666;
+	   border-bottom: 2px solid #999999;
+	   }
+	   #left {
+            float:left;
+            width:180px;
+      	   }
+           #right {
+            width: 100%;
+           }
+	 </style>
+
 
 	 <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 	 <link href="css/impress-demo.css" rel="stylesheet" />
@@ -16,6 +46,15 @@
      </head>
 
      <body>
+       <noscript>
+	 <div style="color:#CC0000; text-align:center">
+	   <b>Warning: <a href="http://www.mathjax.org/">MathJax</a>
+	     requires JavaScript to process the mathematics on this page.<br />
+	     If your browser supports JavaScript, be sure it is enabled.</b>
+	 </div>
+	 <hr>
+       </noscript>
+
 	<div id="impress" class="impress-not-supported">
 <!--	<div class="fallback-messge">
 	   <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
@@ -23,28 +62,117 @@
 	</div>
 -->
 	  <div id="bored" class="step slide" data-x="-1000" data-y="-500">
-            <q>Aren't you just <b>bored</b> with all those slides-based presentations?</q>
+	    <h1><font size="20"> Internal Advisory Board Meeting</font></h1><br>
+	    <center><h2>  Boussinesq-type (Phase-Resolving) Numerical Model Development Effort </h2></center><br><hr />
+	    <center>
+	    <img src="img/erdc_logo.png" width="300" height="300" alt="ERDC Logo" />
+	    </center>
+	    <div id="left">
+	      April 10, 2014
+	    </div>
+	    <div align="right">
+	      <b>Matt Malej</b> &nbsp; &amp; &nbsp; <b>Jane Smith  --  CHL</b>
+	    </div>
 	  </div>
 
+
 	  <div class="step slide" data-x="0" data-y="-500">
-	    My first slide
+	    <h2> Meeting Agenda </h2><br /><br />
+	    <div>
+	      <ul>
+	      <li> 1:00pm - <b>Opening Presentation</b> <br /> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Matt Malej and Jane Smith)</li><br />
+	      <li> 1:30pm - <b> Input: </b> Jeff Melby</li><br />
+	      <li> 1:40pm - <b> Input: </b> Brad Johnson</li><br />
+	      <li> 1:50pm - <b> Input: </b> Chris Massey</li><br />
+	      <li> 2:00pm - General Discussion</li>
+	      </ul>
+	    </div>
 	  </div>
 
 	  <div class="step slide" data-x="1000" data-y="-500">
-	    This is slide 2
-	    <img src="img/schematic.png" width="510" height="210" alt="Schematic" />
+	    <h2> Statements of Need </h2>
+	    <div style="font-size: 14pt">
+	      
+	      <ul id="myUL"> <b>Applications</b>
+		<li> Levee, flood wall, barrier, revetment, breakwater design (coastal and inland)</li>
+		<ul id="myUL">
+		  <li> Runup </li>
+		  <li> Overtopping </li>
+		  <li> Structure loading (wave forces) </li>
+		  <li> Frictional dissipation </li>
+		  <li> Complex geometries - reefs, levees, channels, etc. </li>
+		</ul>
+		<li> Inundation mapping - overland propagation and runup </li>
+		<li> Harbor resonance, harbor and marind infrastructure modifications </li>
+		<li> Transient waves (tsunamis, sneaker waves)
+		<li> Ship wakes </li>
+		<ul id="myUL">
+		  <li> Vessel generated waves and effects on shorelines </li>
+		  <li> Vessel generated bed velocities and shear stresses </li>
+		</ul>
+	      </ul>
+	     
+	    </div>
 	  </div>
 
 	  <div class="step slide" data-x="2000" data-y="-500">
-	    This is slide 3
+	       <h2> Statements of Need (cont.) </h2>
+	       <div style="font-size: 14pt">
+		 <ul id="myUL">
+		 <li>Validated and well documented model</li>
+		 <li> Computational considerations and Parallel implementaion </li>
+		 <ul id="myUL"> 
+		   <li> Computational efficienty (HPC systems) </li>
+		   <li> Deployability (less platform dependence) </li>
+		   <li> User-friendly interface that Districts can apply </li>
+		   <li> Dynamically coupled to other (CHL) models, e.g. phase-averaged models.
+		 </ul>
+		 <li> Nonproprietary (Open Source) code base! </li>
+		 </ul>
+	       </div>
+	</div>
+
+	  <div class="step slide" data-x="3000" data-y="-500">
+	   <h2>Boussinesq-type Equations</h2>
+	   <p><font size="4">Boussinesq-type equations rely on removal of third dimension \(3D \to 2D\) by expanding the canonical variable (velocity potential \(\phi\)) about an arbitrary depth \(z_\alpha\). Plus the dispersion relation \(\omega^2 = gk \tanh(kh) \) is expanded in powers of \(kh\), thus for small \(kh\) we can write 
+	       <font size="3">\[ \tanh(kh) = kh - \frac{1}{3}(kh)^3 + \frac{2}{15}(kh)^5 - \frac{17}{315}(kh)^7 + ... \]</font>
+	       </font></p><br />
+	   <p><font size="3"> The volicty potential can be written as
+	     \begin{equation}\label{eqn:velPotential}
+	      \phi = \phi_\alpha + \mu^2\left[ (z_\alpha-z)\nabla \cdot (h\nabla\phi_\alpha) + \frac{1}{2}({z^2}_\alpha -z^2)\nabla^2\phi_\alpha \right] + O(\mu^4)
+	     \end{equation}
+	   </font></p>
+	   <center>
+	     <img src="img/schematic.png" width="510" height="210" alt="Schematic" />
+	   </center>
+	   <p><font size="3"> Where  \( \ \mu = kh \ \) and \( \ k = \frac{2\pi}{\lambda}\). With free-surface BCs you recover evolution equations for \(\phi_t\) and \(\zeta_t\).
 	  </div>
 
-	  <div id="title" class="step" data-x="3000" data-y="-500" data-scale="0.5">
+	  <div class="step slide" data-x="4000" data-y="-500">
+	    <h2>The Lorenz Equations</h2>
+	    <p>
+	      \begin{align}
+	      \dot{x} & = \sigma(y-x) \\
+	      \dot{y} & = \rho x - y - xz \\
+	      \dot{z} & = -\beta z + xy
+	      \end{align}
+	    </p>
+
+	    <h2>The Cauchy-Schwarz Inequality</h2>
+	    <p>\[
+	      \left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
+	      \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+	      \]
+	    </p>
+	  </div>
+
+	  <div id="title" class="step" data-x="5000" data-y="-500" data-scale="0.5">
 	    This is slide 4
 	  </div>
 
 	<!-- This element introduces rotation -->
-    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
+    <div id="its" class="step" data-x="850" data-y="5000" data-rotate="90" data-scale="5">
         <p>It's a <strong>presentation tool</strong> <br/>
         inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
         and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
