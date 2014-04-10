@@ -104,7 +104,7 @@
 		  <li> Complex geometries - reefs, levees, channels, etc. </li>
 		</ul>
 		<li> Inundation mapping - overland propagation and runup </li>
-		<li> Harbor resonance, harbor and marind infrastructure modifications </li>
+		<li> Harbor resonance, harbor and marine infrastructure modifications </li>
 		<li> Transient waves (tsunamis, sneaker waves)
 		<li> Ship wakes </li>
 		<ul id="myUL">
@@ -129,6 +129,7 @@
 		   <li> Dynamically coupled to other (CHL) models, e.g. phase-averaged models.
 		 </ul>
 		 <li> Nonproprietary (Open Source) code base! </li>
+		 <li> In line with CHL Numerical Modeling Strategy. </li>
 		 </ul>
 	       </div>
 	</div>
@@ -213,7 +214,7 @@
 	  </div>
 
 	  <div class="step slide" data-x="4000" data-y="-500">
-	   <h2>Boussinesq-type Equations</h2>
+	   <h2>Boussinesq-type (Weakly Nonlinear) Equations</h2>
 	   <p><font size="4">Boussinesq-type equations rely on removal of third dimension \(3D \to 2D\) by expanding the canonical variable (velocity potential \(\phi\)) about an arbitrary depth \(z_\alpha\). Plus the dispersion relation \(\omega^2 = gk \tanh(kh) \) is expanded in powers of \(kh\), thus for small \(kh\) we can write 
 	       <font size="3">\[ \tanh(kh) = kh - \frac{1}{3}(kh)^3 + \frac{2}{15}(kh)^5 - \frac{17}{315}(kh)^7 + ... \]</font>
 	       </font></p><br />
@@ -229,21 +230,35 @@
 	  </div>
 
 	  <div class="step slide" data-x="5000" data-y="-500">
-	    <h2>The Lorenz Equations</h2>
-	    <p>
-	      \begin{align}
-	      \dot{x} & = \sigma(y-x) \\
-	      \dot{y} & = \rho x - y - xz \\
-	      \dot{z} & = -\beta z + xy
-	      \end{align}
-	    </p>
+	    <h2>Additional Models of Interest (3rd order)</h2>
+	    <p><font size="3">
+	      Higher-Order Spectral Method (Fourier and Chebyshev) with full dispersion relation and variable order of nonlinearity \(\left(\epsilon=ka=\frac{2\pi\, a}{\lambda}\right)\) would yield evolution equations
+	      \begin{equation}\label{Fully2D_Model_A}
+	      \frac{\partial \zeta}{\partial t} = - \mathcal{L}[\Phi] - \nabla (\zeta \nabla \Phi) - \mathcal{L}[\zeta \mathcal{L}[\Phi]] - \nabla^2 \left( \frac{\zeta^2}{2} \mathcal{L}[\Phi] \right) - \mathcal{L} \left[ \frac{\zeta^2}{2} \nabla^2 \Phi + \zeta \mathcal{L}[\zeta \mathcal{L}[\Phi]] \right] + O(\epsilon^4), 
+	      \end{equation}
 
-	    <h2>The Cauchy-Schwarz Inequality</h2>
-	    <p>\[
-	      \left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
-	      \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+	      \begin{equation}\label{Fully2D_Model_B}
+	      \frac{\partial \Phi}{\partial t} = - g\zeta - \frac{1}{2} |\nabla \Phi |^2 + \frac{1}{2} \left( \mathcal{L}[\Phi] \right)^2 + \mathcal{L}[\Phi] \left( \zeta \nabla^2\Phi + \mathcal{L}[\zeta \mathcal{L}[\Phi]] \right) + O(\epsilon^4),
+	      \end{equation}
+
+	      where the operator \(\mathcal{L}\) takes on the following form in Fourier \((\mathcal{F})\) space
+	      \[
+	      \mathcal{F} \left[ \, \mathcal{L}[\Phi] \, \right] = - \kappa \, \tanh (\kappa h) \hat{\Phi}, \ \ \ {\rm{where}} \ \ \ 
+	      \kappa = \sqrt{k_x^2 + k_y^2}  \ \ \ \ {\rm{and}} \ \ \ \ \hat{\Phi} = \mathcal{F}[\Phi].
 	      \]
-	    </p>
+	    </font></p>
+
+	    <h2>Fast Pseudo-Spectral Numerical Scheme (via FFT)</h2>
+	    <p><font size="3">
+	      \begin{equation}\label{Fourier_Series_A}
+	      \zeta(x,y,t) \ = \ \sum_{m=-\frac{N_x}{2}}^{\frac{N_x}{2}} \sum_{n=-\frac{N_y}{2}}^{\frac{N_y}{2}} a_{mn}(t) \, {\rm{e}}^{{\rm{i}}(m \Delta k_x \, x+n \Delta k_y \, y)} 
+	      \end{equation}
+
+	      \begin{equation}\label{Fourier_Series_B}
+	      \Phi(x,y,z=\zeta,t) \ = \ \sum_{m=-\frac{N_x}{2}}^{\frac{N_x}{2}} \sum_{n=-\frac{N_y}{2}}^{\frac{N_y}{2}} b_{mn}(t) \, {\rm{e}}^{{\rm{i}}(m \Delta k_x \, x+n \Delta k_y \, y)} 
+	      \end{equation}
+
+	    </font></p>
 	  </div>
 
 	  <div id="title" class="step" data-x="7000" data-y="-500" data-scale="1.7">
@@ -305,7 +320,6 @@
 	    </ul>
 	</ul>
       </div>
-        <p>and <b>tiny</b> ideas</p>
     </div>
 
     <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
