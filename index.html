@@ -121,7 +121,7 @@
 	       <div style="font-size: 14pt">
 		 <ul id="myUL">
 		 <li>Validated and well documented model</li>
-		 <li> Computational considerations and Parallel implementaion </li>
+		 <li> Computational considerations and <u>parallel</u> implementaion </li>
 		 <ul id="myUL"> 
 		   <li> Computational efficienty (HPC systems) </li>
 		   <li> Deployability (less platform dependence) </li>
@@ -183,7 +183,7 @@
 		<th id="newTH"> <b> LIMITATIONS </b> </th>
 		<th id="newTH"> <ul id="myUL">
 		    <li> research-based code </li>
-		    <li> NOT open sourced ($$) </li>
+		    <li> NOT open source ($$) </li>
 		  </ul>
 		</th>
 		<th id="newTH"> <ul id="myUL">
@@ -215,7 +215,7 @@
 
 	  <div class="step slide" data-x="4000" data-y="-500">
 	   <h2>Boussinesq-type (Weakly Nonlinear) Equations</h2>
-	   <p><font size="4">Boussinesq-type equations rely on removal of third dimension \(3D \to 2D\) by expanding the canonical variable (velocity potential \(\phi\)) about an arbitrary depth \(z_\alpha\). Plus the dispersion relation \(\omega^2 = gk \tanh(kh) \) is expanded in powers of \(kh\), thus for small \(kh\) we can write 
+	   <p><font size="4">Boussinesq-type equations rely on removal of third dimension \(3D \to 2D\) by expanding the canonical variable (velocity potential \(\phi\)) about an arbitrary depth \(z_\alpha\). Plus the dispersion relation \(\omega^2 = gk \tanh(kh) \) is expanded in powers of \(kh\), thus for small \(kh\) one can write 
 	       <font size="3">\[ \tanh(kh) = kh - \frac{1}{3}(kh)^3 + \frac{2}{15}(kh)^5 - \frac{17}{315}(kh)^7 + ... \]</font>
 	       </font></p><br />
 	   <p><font size="3"> The volicty potential can be written as
@@ -232,7 +232,7 @@
 	  <div class="step slide" data-x="5000" data-y="-500">
 	    <h2>Additional Models of Interest (3rd order)</h2>
 	    <p><font size="3">
-	      Higher-Order Spectral Method (Fourier and Chebyshev) with full dispersion relation and variable order of nonlinearity \(\left(\epsilon=ka=\frac{2\pi\, a}{\lambda}\right)\) would yield evolution equations
+	      Higher-Order Spectral Method (Fourier and Chebyshev) with <a>full dispersion relation</a> and <a>variable order of nonlinearity</a> \(\left(\epsilon=ka=\frac{2\pi\, a}{\lambda}\right)\) would yield evolution equations accurate to 3rd order in wave steepness and have <a>no depth retriction</a> (shallow, finite, deep)
 	      \begin{equation}\label{Fully2D_Model_A}
 	      \frac{\partial \zeta}{\partial t} = - \mathcal{L}[\Phi] - \nabla (\zeta \nabla \Phi) - \mathcal{L}[\zeta \mathcal{L}[\Phi]] - \nabla^2 \left( \frac{\zeta^2}{2} \mathcal{L}[\Phi] \right) - \mathcal{L} \left[ \frac{\zeta^2}{2} \nabla^2 \Phi + \zeta \mathcal{L}[\zeta \mathcal{L}[\Phi]] \right] + O(\epsilon^4), 
 	      \end{equation}
@@ -249,7 +249,7 @@
 	    </font></p>
 
 	    <h2>Fast Pseudo-Spectral Numerical Scheme (via FFT)</h2>
-	    <p><font size="3">
+	    <p><font size="2">
 	      \begin{equation}\label{Fourier_Series_A}
 	      \zeta(x,y,t) \ = \ \sum_{m=-\frac{N_x}{2}}^{\frac{N_x}{2}} \sum_{n=-\frac{N_y}{2}}^{\frac{N_y}{2}} a_{mn}(t) \, {\rm{e}}^{{\rm{i}}(m \Delta k_x \, x+n \Delta k_y \, y)} 
 	      \end{equation}
@@ -265,11 +265,11 @@
 	    <h2> Model Development Roadmap </h2>
 	    <div style="font-size: 19pt">
 	    <ul id="myUL">
-	      <li> High-level parallelization and optimization of target source code (FUNWAVE) </li>
+	      <li> High-level parallelization and optimization of target source code (FUNWAVE) - have fewer stand alone numerical models out there! </li>
 	      <li> Support for distribution on moder HPC (High Performance Computing) systems, such as ERDC's Garnet. </li>
-	      <li> Establishment of I/O standards (XDMF - xmf, HDF5) and distributed version control (Git). </li>
+	      <li> Establishment of I/O standards (XDMF - xmf, HDF5), code release criteria, validation/testing, and distributed version control (Git). </li>
 	      <li> Utlization of a robust build system (e.g. HashDist) that allows for seamless support for continuously changing environments/system and external packages or libraries.</li>
-	      <li> Friendly user-interface that is not system dependent (e.g. IPython Notebook)</li>
+	      <li> Friendly user-interface that is not system dependent (e.g. web-based IPython Notebook)</li>
 	      <li> Varying orders of model  accuracy and nonlinearity (order of expansion), as well as shallow, intermediate/finte, and deep water limits interacting models. </li>
 	      <li> Flexible gridding, although the added complexity could counter balance reductions in computations cells/elements for typical Corps applications.</li>
 	      </ul>
@@ -280,7 +280,7 @@
     <div id="its" class="step" data-x="850" data-y="5000" data-rotate="90" data-scale="5">
       <h2> Internal (CHL) Advisory Board </h2>
       <ul id="myUL">
-	<li> <a href="http://www.chl.com">Dr. Jeffrey Melby</a> </li>
+	<li> <a>Dr. Jeffrey Melby</a> </li>
 	<li> <a>Dr. Chris Massey</a> </li>
 	<li> <a>Dr. Bradley Johnson</a> </li>
 	<li> <a>Dr. Zeki Demirbilek</a> </li>
@@ -304,21 +304,25 @@
       <h2> Develop./Testing/Valid. Progress</h2>
       <div style="font-size:14pt">
 	<ul id="myUL">
-	  <li> Computational Framework 
+	  <li> <b>Computational Framework</b> </li>
 	    <ul id="myUL">
 	      <li> Private Github Repository: <a href="https://github.com/malej/phaseWave">https://github.com/malej/phaseWave</a></li>
 	      <li> System Specific Builds (Makefiles) for <b>Linux</b>, <b>Mac OSX</b>, <b>Garnet-gnu/intel/pgi</b> </li>
-	      <li> External Packages Included with Distribution Framework - Open Source (Python, IPython, Sphinx, SciPy, NumPy, Cython, PyTables, FFTW, XDMF, Nose, MPICH, MPI4py, Matplotlib)</li>
+	      <li> External Packages Included with Distribution Framework - Open Source (Python, IPython, Sphinx, SciPy, NumPy, Cython, PyTables, FFTW, XDMF, Nose, MPICH, MPI4py, Matplotlib, etc.)</li>
 	    </ul>
-	  <li> FUNWAVE </li>
+	  <li> <b>FUNWAVE</b> </li>
 	    <ul id="myUL">
-	      <li> blah funwave </li>
+	      <li> Model built on Linux and Mac OSX (GNU and Intel compilers) and ERDC Garnet.</li>
+	      <li> Verified supplied test example (serial, parallel, cartesian, polar). </li>
+	      <li> Postprocessing in MATLAB done with supplied scripts (toolbox permitting).</li>
 	    </ul>
-	  <li> COULWAVE </li>
+	  <li> <b>COULWAVE</b> </li>
 	    <ul id="myUL">
-	      <li> blah funwave </li>
+	      <li> Built on ERDC Garnet with PGI compilers ONLY.</li>
+	      <li> Validated several test cases with MATLAB scripts (toolbox permitting). </li>
 	    </ul>
 	</ul>
+<font size="3"><a>Planning to test</a>: <b>(i)</b> breaking waves on beach, <b>(ii)</b> wave shaoling for random waves, <b>(iii)</b> wave propagation overa a shaol, <b>(iv)</b> wave runup on a beach/shelf, <b>(v)</b> solitary waves on conical island, <b>(vi)</b> various wave inputs: (a) sinusoidal monochromatic wave, (b) modulated wavetrain, (c) Stokes waves, (d) solitary waves, (e) realistic wave field (e.g. JONWSAP spectrum with directional distribution)  -- all 1D and 2D oblique.</font>
       </div>
     </div>
 
