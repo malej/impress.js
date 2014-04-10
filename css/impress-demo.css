@@ -58,11 +58,11 @@ body {
     line-height: 1;
 }
 
-ul#myUL {margin: 5px; padding: 10px;}
+ul#myUL {margin: 15px; padding: 5px;}
 
 li {
     list-style-position: inside;
-    margin-left: 20px;
+    margin-left: 15px;
     padding-left: 0px;
 }
 /* div.menumodule ul{ */
@@ -88,7 +88,6 @@ table#myTable, td#myTD, th#myTH
 {	
 border:1px solid grey;
 background-color:blue;
-padding: 2px;
 color:white;
 }
 th#newTH
@@ -96,7 +95,7 @@ th#newTH
 border:1px solid blue;
 background-color:white;
 color:gray;
-padding: 2px;
+padding: 1px;
 }
 
 table {

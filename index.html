@@ -63,7 +63,7 @@
 -->
 	  <div id="bored" class="step slide" data-x="-1000" data-y="-500">
 	    <h1><font size="20"> Internal Advisory Board Meeting</font></h1><br>
-	    <center><h2>  Boussinesq-type (Phase-Resolving) Numerical Model Development Effort </h2></center><br><hr />
+	    <center><h2>  Boussinesq-type (Phase-Resolving) Numerical Wave Model Development Effort </h2></center><br><hr />
 	    <center>
 	    <img src="img/erdc_logo.png" width="300" height="300" alt="ERDC Logo" />
 	    </center>
@@ -179,7 +179,7 @@
 		<th id="newTH"> MATLAB (grid generation and visualization) ~ LIMITTED</th>
 	      </tr>
 	      <tr>
-		<th id="newTH"> <b> LIMITATATIONS </b> </th>
+		<th id="newTH"> <b> LIMITATIONS </b> </th>
 		<th id="newTH"> <ul id="myUL">
 		    <li> research-based code </li>
 		    <li> NOT open sourced ($$) </li>
@@ -187,7 +187,7 @@
 		</th>
 		<th id="newTH"> <ul id="myUL">
 		    <li> mainly Fortran77 </li>
-		    <li> compiles only on PGI compilers ($$-ERDC HPC) </li>
+		    <li> compiles only on PGI compilers (ERDC HPC) </li>
 		    <li> no version control </li>
 		    <li> community not very active (devel. and users)</li>
 		    <li> relies on MATLAB with additional toolboxes </li>
@@ -219,7 +219,7 @@
 	       </font></p><br />
 	   <p><font size="3"> The volicty potential can be written as
 	     \begin{equation}\label{eqn:velPotential}
-	      \phi = \phi_\alpha + \mu^2\left[ (z_\alpha-z)\nabla \cdot (h\nabla\phi_\alpha) + \frac{1}{2}({z^2}_\alpha -z^2)\nabla^2\phi_\alpha \right] + O(\mu^4)
+	      \phi = \phi_\alpha + \mu^2\left[ (z_\alpha-z)\nabla \cdot (h\nabla\phi_\alpha) + \frac{1}{2}({z_\alpha}^2 -z^2)\nabla^2\phi_\alpha \right] + O(\mu^4)
 	     \end{equation}
 	   </font></p>
 	   <center>
@@ -246,32 +246,75 @@
 	    </p>
 	  </div>
 
-	  <div id="title" class="step" data-x="6000" data-y="-500" data-scale="0.5">
-	    This is slide 4
+	  <div id="title" class="step" data-x="7000" data-y="-500" data-scale="1.7">
+	    <h2> Model Development Roadmap </h2>
+	    <div style="font-size: 19pt">
+	    <ul id="myUL">
+	      <li> High-level parallelization and optimization of target source code (FUNWAVE) </li>
+	      <li> Support for distribution on moder HPC (High Performance Computing) systems, such as ERDC's Garnet. </li>
+	      <li> Establishment of I/O standards (XDMF - xmf, HDF5) and distributed version control (Git). </li>
+	      <li> Utlization of a robust build system (e.g. HashDist) that allows for seamless support for continuously changing environments/system and external packages or libraries.</li>
+	      <li> Friendly user-interface that is not system dependent (e.g. IPython Notebook)</li>
+	      <li> Varying orders of model  accuracy and nonlinearity (order of expansion), as well as shallow, intermediate/finte, and deep water limits interacting models. </li>
+	      <li> Flexible gridding, although the added complexity could counter balance reductions in computations cells/elements for typical Corps applications.</li>
+	      </ul>
+	    </div>
 	  </div>
 
 	<!-- This element introduces rotation -->
     <div id="its" class="step" data-x="850" data-y="5000" data-rotate="90" data-scale="5">
-        <p>It's a <strong>presentation tool</strong> <br/>
-        inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
-        and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
+      <h2> Internal (CHL) Advisory Board </h2>
+      <ul id="myUL">
+	<li> <a href="http://www.chl.com">Dr. Jeffrey Melby</a> </li>
+	<li> <a>Dr. Chris Massey</a> </li>
+	<li> <a>Dr. Bradley Johnson</a> </li>
+	<li> <a>Dr. Zeki Demirbilek</a> </li>
+	</ul>   
+      <div style="font-size: 20pt">\(\to\) Test/Validation Cases, Capabilities, Field Group Suggestions.</div>
     </div>
 
-    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
-        <p>visualize your <b>big</b> <span class="thoughts">thoughts</span></p>
-    </div>
-
-    <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+    <div id="big" class="step" style="font-size: 36pt" data-x="3500" data-y="2100" data-rotate="180" data-scale="2">
+      <h2> External Advisory Panel </h2><br />
+      <div style="font-size:30pt">
+      <ul id="myUL">
+	<li> <a href="http://chinacat.coastal.udel.edu">Dr. James Kirby </a> </li><br />
+	<li> <a href="http://coastal.usc.edu/plynett/">Dr. Patrick Lynett </a> </li><br />
+	<li> <a href="http://engineering.nd.edu/profiles/akennedy">Dr. Andrew Kennedy </a> </li><br />
+      </ul>
+      </div>
+      <div style="font-size: 14pt">\(\to\) Research and Numerical Model Development Strategic Plan</div>        
+      </div>
+    
+    <div id="slide" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
+      <h2> Develop./Testing/Valid. Progress</h2>
+      <div style="font-size:14pt">
+	<ul id="myUL">
+	  <li> Computational Framework 
+	    <ul id="myUL">
+	      <li> Private Github Repository: <a href="https://github.com/malej/phaseWave">https://github.com/malej/phaseWave</a></li>
+	      <li> System Specific Builds (Makefiles) for <b>Linux</b>, <b>Mac OSX</b>, <b>Garnet-gnu/intel/pgi</b> </li>
+	      <li> External Packages Included with Distribution Framework - Open Source (Python, IPython, Sphinx, SciPy, NumPy, Cython, PyTables, FFTW, XDMF, Nose, MPICH, MPI4py, Matplotlib)</li>
+	    </ul>
+	  <li> FUNWAVE </li>
+	    <ul id="myUL">
+	      <li> blah funwave </li>
+	    </ul>
+	  <li> COULWAVE </li>
+	    <ul id="myUL">
+	      <li> blah funwave </li>
+	    </ul>
+	</ul>
+      </div>
         <p>and <b>tiny</b> ideas</p>
     </div>
 
     <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
-        <p>one more thing...</p>
+        <p>Thank you for your attention...</p><br /><br /><br /><br /><br /><br /><br />
     </div>
 
-    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-        <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it's</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
-        <span class="footnote">* beat that, prezi ;)</span>
+    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="4">
+        <p><span class="have">Now we</span> <span class="you">need</span> <span class="noticed">your input</span> <span class="its">and suggestions</span> <span class="in">for test cases, </span> <b>  capabilities, field group formation/personnel.<sup>*</sup></b></p>
+        <span class="footnote" style="font-size:14pt">* planned External Advisory Panel meeting at Univ. of Del. (May, 2014) </span>
     </div>
     
     <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
