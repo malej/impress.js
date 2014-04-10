@@ -134,6 +134,85 @@
 	</div>
 
 	  <div class="step slide" data-x="3000" data-y="-500">
+	    <h2> Model Attributes and Limitations </h2>
+	    <table id="myTable" style="font-size: 8pt;">
+	      <tr>
+		<th id="myTH"> </th>
+		<th id="myTH"> &nbsp;&nbsp;&nbsp; BOUSS-2D &nbsp;&nbsp;&nbsp; </th>
+		<th id="myTH"> &nbsp;&nbsp;&nbsp; COULWAVE &nbsp;&nbsp;&nbsp; </th>
+		<th id="myTH"> &nbsp;&nbsp;&nbsp; FUNWAVE &nbsp;&nbsp;&nbsp; </th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b> Accuracy </b> </th>
+		<th id="newTH"> \( (kh)^2 \) </th>
+		<th id="newTH"> \( (kh)^2 \) </th>
+		<th id="newTH"> \( (kh)^2 \) </th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b>Open Source</b> </th>
+		<th id="newTH"> NO </th>
+		<th id="newTH"> YES (no license)</th>
+		<th id="newTH"> YES (GNU General Public License)</th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b>Numerical Scheme</b></th>
+		<th id="newTH"> Finite difference; 3rd order Crank-Nicholson</th>
+		<th id="newTH"> Finite difference; Finite Volume; MUSCLE-TVD; 4th order in time </th>
+		<th id="newTH"> Finite difference; MUSCLE-TVD; RK4 in time</th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b> Parallel </b> </th>
+		<th id="newTH"> NO </th>
+		<th id="newTH"> YES (MPI)</th>
+		<th id="newTH"> YES (MPI)</th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b> Grid</b> </th>
+		<th id="newTH"> Cartesian</th>
+		<th id="newTH"> Cartesian</th>
+		<th id="newTH"> Cartesian and Spherical Polar</th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b> Support Software</b> </th>
+		<th id="newTH"> SMS </th>
+		<th id="newTH"> MATLAB (grid generation and visualization)</th>
+		<th id="newTH"> MATLAB (grid generation and visualization) ~ LIMITTED</th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b> LIMITATATIONS </b> </th>
+		<th id="newTH"> <ul id="myUL">
+		    <li> research-based code </li>
+		    <li> NOT open sourced ($$) </li>
+		  </ul>
+		</th>
+		<th id="newTH"> <ul id="myUL">
+		    <li> mainly Fortran77 </li>
+		    <li> compiles only on PGI compilers ($$-ERDC HPC) </li>
+		    <li> no version control </li>
+		    <li> community not very active (devel. and users)</li>
+		    <li> relies on MATLAB with additional toolboxes </li>
+		    <li> text-based input user-interface </li>
+		    <li> ASCII output; poor software-carpentry </li>
+		</ul></th>
+		<th id="newTH"> <ul id="myUL">
+		    <li> few source files with 1K+ lines of code </li>
+		    <li> ASCII files for output</li>
+		    <li> post-processing relies on MATLAB toolboxes</li>
+		    <li> computes on 2 or 4 cores <b>ONLY</b> (MPI) </li>
+		    <li> system specific Makefiles NOT present </li>
+		    <li> poor software-carpentry practices
+		</ul></th>
+	      </tr>
+	      <tr>
+		<th id="newTH"> <b> </b> </th>
+		<th id="newTH"> </th>
+		<th id="newTH"> </th>
+		<th id="newTH"> </th>
+	      </tr>
+	    </table>
+	  </div>
+
+	  <div class="step slide" data-x="4000" data-y="-500">
 	   <h2>Boussinesq-type Equations</h2>
 	   <p><font size="4">Boussinesq-type equations rely on removal of third dimension \(3D \to 2D\) by expanding the canonical variable (velocity potential \(\phi\)) about an arbitrary depth \(z_\alpha\). Plus the dispersion relation \(\omega^2 = gk \tanh(kh) \) is expanded in powers of \(kh\), thus for small \(kh\) we can write 
 	       <font size="3">\[ \tanh(kh) = kh - \frac{1}{3}(kh)^3 + \frac{2}{15}(kh)^5 - \frac{17}{315}(kh)^7 + ... \]</font>
@@ -149,7 +228,7 @@
 	   <p><font size="3"> Where  \( \ \mu = kh \ \) and \( \ k = \frac{2\pi}{\lambda}\). With free-surface BCs you recover evolution equations for \(\phi_t\) and \(\zeta_t\).
 	  </div>
 
-	  <div class="step slide" data-x="4000" data-y="-500">
+	  <div class="step slide" data-x="5000" data-y="-500">
 	    <h2>The Lorenz Equations</h2>
 	    <p>
 	      \begin{align}
@@ -167,7 +246,7 @@
 	    </p>
 	  </div>
 
-	  <div id="title" class="step" data-x="5000" data-y="-500" data-scale="0.5">
+	  <div id="title" class="step" data-x="6000" data-y="-500" data-scale="0.5">
 	    This is slide 4
 	  </div>
 

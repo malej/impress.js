@@ -83,6 +83,22 @@ q:before, q:after {
     content: none;
 }
 
+
+table#myTable, td#myTD, th#myTH
+{	
+border:1px solid grey;
+background-color:blue;
+padding: 2px;
+color:white;
+}
+th#newTH
+{
+border:1px solid blue;
+background-color:white;
+color:gray;
+padding: 2px;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
